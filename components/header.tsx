@@ -7,7 +7,7 @@ import { Menu, X } from "lucide-react"
 export default function Header() {
   const [isOpen, setIsOpen] = useState(false)
 
-  const logoUrl = "https://res.cloudinary.com/dtgaxulpq/image/upload/v1770336237/logo-lotus_rjft4m.png"
+  const logoUrl = "/logo-lotus.png"
   const flagUrl =
     "https://res.cloudinary.com/dtgaxulpq/image/upload/v1770336291/switzerland-national-flag-transparent-free-png_kkooce.png"
 
@@ -28,7 +28,7 @@ export default function Header() {
             <div className="flex items-center gap-3">
               <img
                 src={logoUrl}
-                alt="LOTUS HILL Logo"
+                alt="Lotus Hill logo"
                 className="h-14 w-14 object-contain transition-transform group-hover:scale-105 duration-300"
               />
               <div>
