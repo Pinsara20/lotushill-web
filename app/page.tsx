@@ -1,87 +1,144 @@
-import Hero from "@/components/hero"
-import Card from "@/components/card"
 import { Button } from "@/components/ui/button"
 import Link from "next/link"
+import { GraduationCap, Brain, Palette, Activity, Heart, ArrowRight, Star, Quote, Phone, Sparkles } from "lucide-react"
 
 export default function Home() {
   const programs = [
     {
-      icon: "🎓",
-      title: "Primary Education",
-      description: "Comprehensive primary education tailored to individual learning needs with specialized support.",
+      icon: <GraduationCap className="w-8 h-8" />,
+      title: "Education",
+      description: "Comprehensive education tailored to individual learning needs with specialized support.",
+      color: "primary" as const,
     },
     {
-      icon: "🧠",
+      icon: <Brain className="w-8 h-8" />,
       title: "Speech Therapy",
       description: "Professional speech and language therapy sessions to support communication development.",
+      color: "accent" as const,
     },
     {
-      icon: "🤸",
-      title: "Occupational Therapy",
-      description: "Therapeutic activities to develop motor skills and independence in daily activities.",
+      icon: <Activity className="w-8 h-8" />,
+      title: "Vocational Training",
+      description: "Practical skills development and job training programs to prepare students for meaningful employment.",
+      color: "secondary" as const,
     },
     {
-      icon: "🎨",
+      icon: <Palette className="w-8 h-8" />,
       title: "Creative Arts",
       description: "Art, music, and drama programs that encourage self-expression and creativity.",
+      color: "primary" as const,
     },
   ]
 
-  const testimonials = [
-    {
-      name: "Sarah Johnson",
-      role: "Parent",
-      message:
-        "LOTUS HILL has transformed my son's confidence and learning. The staff is incredibly caring and professional.",
+
+  const colorMap = {
+    primary: {
+      iconBg: "bg-primary/10",
+      iconText: "text-primary",
+      border: "border-primary/20",
+      hoverBorder: "hover:border-primary/50",
+      glow: "group-hover:shadow-primary/10",
     },
-    {
-      name: "Dr. Emily Chen",
-      role: "Educational Specialist",
-      message: "Excellent inclusive approach to education. The school truly puts each child's individual needs first.",
+    accent: {
+      iconBg: "bg-accent/10",
+      iconText: "text-accent",
+      border: "border-accent/20",
+      hoverBorder: "hover:border-accent/50",
+      glow: "group-hover:shadow-accent/10",
     },
-    {
-      name: "Michael Torres",
-      role: "Parent",
-      message: "My daughter loves coming to school here. The combination of education and therapy has been amazing.",
+    secondary: {
+      iconBg: "bg-secondary/10",
+      iconText: "text-secondary",
+      border: "border-secondary/20",
+      hoverBorder: "hover:border-secondary/50",
+      glow: "group-hover:shadow-secondary/10",
     },
-  ]
+  }
 
   return (
     <>
-      <Hero
-        schoolName="LOTUS HILL"
-        subtitle="Welcome to Excellence in Special Education"
-        title="Every Child Deserves Quality Education"
-        description="At LOTUS HILL Special School, we provide comprehensive education and therapeutic services designed to help children with special needs thrive academically, socially, and emotionally."
-        ctaText="Explore Programs"
-        ctaHref="/programs"
-        image="/banner.png"
-      />
+      {/* ═══════════════════════ HERO ═══════════════════════ */}
+      <section className="relative min-h-[92vh] flex items-center overflow-hidden">
+        {/* Background image */}
+        <div
+          className="absolute inset-0 bg-cover bg-center"
+          style={{
+            backgroundImage:
+              "url('https://res.cloudinary.com/dtgaxulpq/image/upload/v1770334844/lotus-hill-bg_jtgudj.jpg')",
+          }}
+        />
+        {/* Overlay */}
+        <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/40 to-black/70" />
+        {/* Decorative blobs */}
+        <div className="absolute inset-0 overflow-hidden pointer-events-none">
+          <div className="absolute -top-20 -right-20 w-[500px] h-[500px] bg-primary/20 rounded-full blur-[120px] animate-float" />
+          <div className="absolute -bottom-20 -left-20 w-[400px] h-[400px] bg-accent/20 rounded-full blur-[100px] animate-float animation-delay-300" />
+        </div>
 
-      {/* Mission & Vision */}
-      <section className="py-20 md:py-28 bg-gradient-to-b from-white to-background">
+        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full py-20 flex justify-end">
+          <div className="max-w-3xl text-right">
+            {/* Heading */}
+            <h1 className="animate-fade-up animation-delay-100 text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-black text-white leading-[1.05] tracking-tight mb-6 drop-shadow-2xl">
+              Every Child
+              <span className="block text-accent drop-shadow-2xl">
+                Deserves to Shine
+              </span>
+            </h1>
+
+            {/* Subheading */}
+            <p className="animate-fade-up animation-delay-200 text-lg md:text-xl text-white/80 leading-relaxed max-w-2xl ml-auto mb-10">
+              At <strong className="text-white">LOTUS HILL</strong>, we provide comprehensive education and therapeutic services designed to help children with special needs thrive academically, socially, and emotionally.
+            </p>
+
+          </div>
+        </div>
+
+      </section>
+
+
+      {/* ═══════════════════════ MISSION & VISION ═══════════════════════ */}
+      <section className="py-24 md:py-32 bg-background overflow-hidden">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-16">
-            <div className="group relative bg-white rounded-2xl p-10 shadow-xl hover:shadow-2xl transition-all duration-500 border-l-4 border-primary hover:border-accent overflow-hidden">
-              <div className="absolute inset-0 bg-gradient-to-br from-primary/5 to-accent/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-              <div className="relative z-10 space-y-5">
-                <div className="inline-flex items-center gap-3 px-5 py-2 rounded-full bg-gradient-to-r from-primary/10 to-accent/10">
-                  <span className="text-2xl">🎯</span>
-                  <h2 className="text-3xl font-black bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">Our Mission</h2>
+          {/* Section Header */}
+          <div className="text-center mb-20">
+            <div className="inline-flex items-center gap-2 px-5 py-2 rounded-full bg-gradient-to-r from-primary/10 to-accent/10 mb-5">
+              <Heart className="w-4 h-4 text-primary" />
+              <span className="text-sm font-bold bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent tracking-wide">WHO WE ARE</span>
+            </div>
+            <h2 className="text-4xl md:text-5xl font-black text-foreground mb-4">
+              Guided by <span className="text-foreground">Purpose</span>
+            </h2>
+            <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
+              Our mission and vision drive everything we do at Lotus Hill.
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 md:gap-12">
+            {/* Mission Card */}
+            <div className="group relative bg-white rounded-3xl p-10 md:p-12 shadow-lg hover:shadow-2xl transition-all duration-500 border border-border/50 hover:border-primary/30 overflow-hidden">
+              <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-primary via-accent to-secondary" />
+              <div className="absolute -top-24 -right-24 w-48 h-48 bg-primary/5 rounded-full blur-2xl group-hover:bg-primary/10 transition-colors duration-500" />
+              <div className="relative z-10 space-y-6">
+                <div className="inline-flex items-center justify-center w-16 h-16 rounded-2xl bg-gradient-to-br from-primary to-accent text-white shadow-lg shadow-primary/20">
+                  <svg xmlns="http://www.w3.org/2000/svg" className="w-8 h-8" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/></svg>
                 </div>
+                <h2 className="text-3xl font-black text-foreground">Our Mission</h2>
                 <p className="text-lg text-muted-foreground leading-relaxed">
                   To provide inclusive, quality education and comprehensive therapeutic services that empower children
                   with special needs to reach their full potential and become confident, independent members of society.
                 </p>
               </div>
             </div>
-            <div className="group relative bg-white rounded-2xl p-10 shadow-xl hover:shadow-2xl transition-all duration-500 border-l-4 border-accent hover:border-secondary overflow-hidden">
-              <div className="absolute inset-0 bg-gradient-to-br from-accent/5 to-secondary/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-              <div className="relative z-10 space-y-5">
-                <div className="inline-flex items-center gap-3 px-5 py-2 rounded-full bg-gradient-to-r from-accent/10 to-secondary/10">
-                  <span className="text-2xl">🌟</span>
-                  <h2 className="text-3xl font-black bg-gradient-to-r from-accent to-secondary bg-clip-text text-transparent">Our Vision</h2>
+
+            {/* Vision Card */}
+            <div className="group relative bg-white rounded-3xl p-10 md:p-12 shadow-lg hover:shadow-2xl transition-all duration-500 border border-border/50 hover:border-accent/30 overflow-hidden">
+              <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-accent via-secondary to-tertiary" />
+              <div className="absolute -top-24 -right-24 w-48 h-48 bg-accent/5 rounded-full blur-2xl group-hover:bg-accent/10 transition-colors duration-500" />
+              <div className="relative z-10 space-y-6">
+                <div className="inline-flex items-center justify-center w-16 h-16 rounded-2xl bg-gradient-to-br from-accent to-secondary text-white shadow-lg shadow-accent/20">
+                  <Sparkles className="w-8 h-8" />
                 </div>
+                <h2 className="text-3xl font-black text-foreground">Our Vision</h2>
                 <p className="text-lg text-muted-foreground leading-relaxed">
                   A world where every child, regardless of their abilities, has access to quality education, therapeutic
                   support, and the opportunity to develop their unique talents and contribute meaningfully to their
@@ -93,102 +150,58 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Featured Programs */}
-      <section className="py-20 md:py-28 bg-gradient-to-b from-very-light-pink/50 via-white to-background">
+      {/* ═══════════════════════ PROGRAMS ═══════════════════════ */}
+      <section className="py-24 md:py-32 bg-background">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          {/* Section Header */}
           <div className="text-center mb-16">
-            <div className="inline-flex items-center gap-2 px-6 py-2 rounded-full bg-gradient-to-r from-primary/10 to-accent/10 mb-6">
-              <span className="text-sm font-bold bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">WHAT WE OFFER</span>
+            <div className="inline-flex items-center gap-2 px-5 py-2 rounded-full bg-gradient-to-r from-primary/10 to-accent/10 mb-5">
+              <GraduationCap className="w-4 h-4 text-primary" />
+              <span className="text-sm font-bold bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent tracking-wide">WHAT WE OFFER</span>
             </div>
-            <h2 className="text-4xl md:text-5xl font-black bg-gradient-to-r from-primary via-accent to-secondary bg-clip-text text-transparent mb-6">Our Programs & Services</h2>
-            <p className="text-xl text-muted-foreground max-w-3xl mx-auto leading-relaxed">
-              We offer a comprehensive range of educational and therapeutic services designed to support your child's
-              development.
+            <h2 className="text-4xl md:text-5xl font-black text-foreground mb-4">
+              Programs & <span className="text-foreground">Services</span>
+            </h2>
+            <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
+              A comprehensive range of educational and therapeutic services designed to support your child&apos;s unique journey.
             </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-            {programs.map((program, index) => (
-              <Card
-                key={index}
-                icon={program.icon}
-                title={program.title}
-                description={program.description}
-                color={["primary", "accent", "secondary", "tertiary"][index % 4] as any}
-              />
-            ))}
-          </div>
-
-          <div className="text-center mt-16">
-            <Button
-              asChild
-              size="lg"
-              className="bg-gradient-to-r from-primary to-accent hover:from-accent hover:to-secondary text-primary-foreground font-bold shadow-xl shadow-primary/20 hover:shadow-2xl hover:shadow-accent/30 transition-all duration-300 hover:scale-105 rounded-xl px-10 py-6 text-base"
-            >
-              <Link href="/programs">View All Programs</Link>
-            </Button>
-          </div>
-        </div>
-      </section>
-
-      {/* Testimonials */}
-      <section className="py-20 md:py-28 bg-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-16">
-            <div className="inline-flex items-center gap-2 px-6 py-2 rounded-full bg-gradient-to-r from-primary/10 to-accent/10 mb-6">
-              <span className="text-sm font-bold bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">TESTIMONIALS</span>
-            </div>
-            <h2 className="text-4xl md:text-5xl font-black bg-gradient-to-r from-primary via-accent to-secondary bg-clip-text text-transparent">What Parents & Educators Say</h2>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {testimonials.map((testimonial, index) => (
-              <div
-                key={index}
-                className="group relative bg-gradient-to-br from-white to-very-light-pink/30 rounded-2xl p-10 border-2 border-primary/10 hover:border-accent/40 transition-all duration-500 shadow-xl hover:shadow-2xl hover:-translate-y-2 overflow-hidden"
-              >
-                <div className="absolute inset-0 bg-gradient-to-br from-accent/5 to-secondary/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-                <div className="relative z-10">
-                  <div className="text-5xl text-accent/20 mb-4">"</div>
-                  <p className="text-lg text-foreground mb-8 italic leading-relaxed font-medium">
-                    {testimonial.message}
-                  </p>
-                  <div className="flex items-center gap-4">
-                    <div className="w-12 h-12 rounded-full bg-gradient-to-br from-primary to-accent flex items-center justify-center text-white font-bold text-lg">
-                      {testimonial.name.charAt(0)}
+          {/* Program Cards */}
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+            {programs.map((program, index) => {
+              const colors = colorMap[program.color]
+              return (
+                <div
+                  key={index}
+                  className={`group relative bg-white rounded-2xl p-8 shadow-md hover:shadow-2xl ${colors.glow} transition-all duration-500 hover:-translate-y-2 border ${colors.border} ${colors.hoverBorder} overflow-hidden`}
+                >
+                  {/* Top accent line */}
+                  <div className={`absolute top-0 left-0 right-0 h-1 bg-gradient-to-r ${
+                    program.color === "primary" ? "from-primary to-accent" :
+                    program.color === "accent" ? "from-accent to-secondary" :
+                    "from-secondary to-tertiary"
+                  } scale-x-0 group-hover:scale-x-100 transition-transform duration-500 origin-left`} />
+                  <div className="relative z-10 space-y-5">
+                    <div className={`inline-flex items-center justify-center w-14 h-14 rounded-2xl ${colors.iconBg} ${colors.iconText} transition-all duration-300 group-hover:scale-110`}>
+                      {program.icon}
                     </div>
-                    <div>
-                      <p className="font-bold text-foreground">{testimonial.name}</p>
-                      <p className="text-sm text-accent font-semibold">{testimonial.role}</p>
-                    </div>
+                    <h3 className="text-xl font-bold text-foreground group-hover:text-primary transition-colors duration-300">
+                      {program.title}
+                    </h3>
+                    <p className="text-muted-foreground leading-relaxed text-[15px]">
+                      {program.description}
+                    </p>
                   </div>
                 </div>
-              </div>
-            ))}
+              )
+            })}
           </div>
+
         </div>
       </section>
 
-      {/* CTA Section */}
-      <section className="relative py-24 md:py-32 bg-gradient-to-br from-primary via-accent to-secondary text-primary-foreground overflow-hidden">
-        <div className="absolute inset-0 bg-[url('/pattern.svg')] opacity-10"></div>
-        <div className="absolute top-0 right-0 w-96 h-96 bg-white/10 rounded-full blur-3xl"></div>
-        <div className="absolute bottom-0 left-0 w-96 h-96 bg-white/10 rounded-full blur-3xl"></div>
-        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h2 className="text-4xl md:text-6xl font-black mb-6 animate-in fade-in slide-in-from-bottom-4 duration-1000">Ready to Join LOTUS HILL?</h2>
-          <p className="text-xl md:text-2xl mb-12 max-w-3xl mx-auto font-medium leading-relaxed animate-in fade-in slide-in-from-bottom-6 duration-1000 delay-200">
-            Take the first step towards your child's success. Contact us today to learn more about our programs and
-            enrollment process.
-          </p>
-          <Button
-            asChild
-            size="lg"
-            className="bg-white hover:bg-white/90 text-primary font-bold shadow-2xl hover:shadow-white/20 transition-all duration-300 hover:scale-110 rounded-xl px-12 py-7 text-lg animate-in fade-in slide-in-from-bottom-8 duration-1000 delay-300"
-          >
-            <Link href="/contact">Get in Touch</Link>
-          </Button>
-        </div>
-      </section>
+
     </>
   )
 }

@@ -26,7 +26,7 @@ export default function Hero({
       <div
         className="relative w-full h-96 md:h-[28rem] bg-cover bg-center"
         style={{
-          backgroundImage: `url('/banner2.png')`,
+          backgroundImage: `url('/lotus-hill-bgground.jpg')`,
         }}
       >
         <div className="absolute inset-0 bg-gradient-to-b from-black/30 via-black/10 to-background/95"></div>
