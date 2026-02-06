@@ -3,10 +3,13 @@
 import { useState } from "react"
 import Link from "next/link"
 import { Menu, X } from "lucide-react"
-import { Button } from "@/components/ui/button"
 
 export default function Header() {
   const [isOpen, setIsOpen] = useState(false)
+
+  const logoUrl = "https://res.cloudinary.com/dtgaxulpq/image/upload/v1770336237/logo-lotus_rjft4m.png"
+  const flagUrl =
+    "https://res.cloudinary.com/dtgaxulpq/image/upload/v1770336291/switzerland-national-flag-transparent-free-png_kkooce.png"
 
   const navigation = [
     { name: "Home", href: "/" },
@@ -23,7 +26,11 @@ export default function Header() {
           {/* Logo */}
           <Link href="/" className="flex-shrink-0 group">
             <div className="flex items-center gap-3">
-              <div className="text-3xl transition-transform group-hover:scale-110 duration-300">🌸</div>
+              <img
+                src={logoUrl}
+                alt="LOTUS HILL Logo"
+                className="h-16 w-16 object-contain transition-transform group-hover:scale-110 duration-300"
+              />
               <div>
                 <div className="text-2xl font-black bg-gradient-to-r from-primary via-accent to-secondary bg-clip-text text-transparent">
                   LOTUS HILL
@@ -47,24 +54,17 @@ export default function Header() {
             ))}
           </nav>
 
-          {/* CTA Button - Desktop */}
-          <div className="hidden md:block">
-            <Button
-              asChild
-              className="bg-gradient-to-r from-primary to-accent hover:from-accent hover:to-secondary text-primary-foreground font-bold shadow-lg shadow-primary/20 hover:shadow-xl hover:shadow-accent/30 transition-all duration-300 hover:scale-105 rounded-xl px-6"
+          <div className="flex items-center gap-4">
+            <img src={flagUrl} alt="Switzerland Flag" className="h-20 w-50 object-contain" />
+            {/* Mobile Menu Button */}
+            <button
+              onClick={() => setIsOpen(!isOpen)}
+              className="md:hidden inline-flex items-center justify-center p-2.5 rounded-xl text-primary hover:bg-primary/10 transition-all duration-300"
+              aria-label="Toggle navigation"
             >
-              <Link href="/contact">Enroll Now</Link>
-            </Button>
+              {isOpen ? <X size={24} /> : <Menu size={24} />}
+            </button>
           </div>
-
-          {/* Mobile Menu Button */}
-          <button
-            onClick={() => setIsOpen(!isOpen)}
-            className="md:hidden inline-flex items-center justify-center p-2.5 rounded-xl text-primary hover:bg-primary/10 transition-all duration-300"
-            aria-label="Toggle navigation"
-          >
-            {isOpen ? <X size={24} /> : <Menu size={24} />}
-          </button>
         </div>
 
         {/* Mobile Navigation */}
@@ -80,11 +80,6 @@ export default function Header() {
                 {item.name}
               </Link>
             ))}
-            <div className="px-4 pt-4">
-              <Button asChild className="w-full bg-gradient-to-r from-primary to-accent hover:from-accent hover:to-secondary text-primary-foreground font-bold shadow-lg rounded-xl">
-                <Link href="/contact">Enroll Now</Link>
-              </Button>
-            </div>
           </div>
         )}
       </div>
