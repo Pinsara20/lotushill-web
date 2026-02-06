@@ -13,77 +13,75 @@ export default function News() {
   const upcomingEvents = [
     {
       id: 1,
-      date: "January 25, 2026",
-      time: "10:00 AM - 12:00 PM",
-      title: "School Open House",
+      date: "February 14, 2026",
+      title: "Sunshine Games",
       description:
-        "Tour our facilities, meet our staff, and learn about our programs. Perfect for prospective families!",
-      location: "Main Campus",
-      category: "Community",
-      icon: "🏫",
+        "A vibrant day of inclusive games and activities celebrating joy, teamwork, and the spirit of togetherness among our students.",
+      category: "Sports",
     },
     {
       id: 2,
-      date: "February 5, 2026",
-      time: "2:00 PM - 4:00 PM",
-      title: "Parent-Teacher Conferences",
-      description: "Individual meetings with teachers and therapists to discuss your child's progress and development.",
-      location: "All Classrooms",
-      category: "Academic",
-      icon: "👨‍👩‍👧",
+      date: "March 10, 2026",
+      title: "Lotus Hill Day Charity Event",
+      description:
+        "Annual charity gathering to support our mission, featuring performances, fundraising activities, and community engagement.",
+      category: "Community",
     },
     {
       id: 3,
-      date: "February 14, 2026",
-      time: "9:00 AM - 1:00 PM",
-      title: "Valentine's Day Celebration",
+      date: "March 20–21, 2026",
+      title: "Celebrating International Down Syndrome Day – Overnight Camp",
       description:
-        "Special arts and crafts activities, games, and treats to celebrate love and friendship with our school community.",
-      location: "Main Hall",
+        "A two-day overnight camp celebrating International Down Syndrome Day with fun activities, bonding experiences, and awareness programs.",
       category: "Special Event",
-      icon: "❤️",
     },
     {
       id: 4,
-      date: "March 10, 2026",
-      time: "6:00 PM - 8:00 PM",
-      title: "Family Movie Night",
-      description: "Bring your family for a fun evening of movies, popcorn, and entertainment. Free admission for all!",
-      location: "Auditorium",
-      category: "Community",
-      icon: "🎬",
+      date: "April 10, 2026",
+      title: "Sinhala and Tamil New Year Celebration",
+      description:
+        "Traditional festivities marking the Sinhala and Tamil New Year with cultural games, food, and joyful celebrations.",
+      category: "Cultural",
     },
     {
       id: 5,
-      date: "March 21, 2026",
-      time: "All Day",
-      title: "Spring Sports Day",
+      date: "June 30, 2026",
+      title: "Para Games",
       description:
-        "Inclusive sports activities, games, and competitions designed to celebrate physical activity and teamwork.",
-      location: "Sports Ground",
+        "Competitive para-sports event showcasing the athletic talents and determination of our students on a national stage.",
       category: "Sports",
-      icon: "⚽",
     },
     {
       id: 6,
-      date: "April 15, 2026",
-      time: "9:00 AM - 3:00 PM",
-      title: "Spring Art Showcase",
+      date: "August 1, 2026",
+      title: "Celebrating Switzerland's National Day",
       description:
-        "Display of artwork and creative projects from our students throughout the year. Celebration of creativity!",
-      location: "Gallery & Courtyard",
-      category: "Arts",
-      icon: "🎨",
+        "Honouring our partnership with Switzerland through cultural exchanges, performances, and a special ceremony of gratitude.",
+      category: "Cultural",
+    },
+  ]
+
+  const recentHighlights = [
+    {
+      title: "Children's Day 2025",
+      videoId: "9JPECOdlzZQ",
+    },
+    {
+      title: "COROBOREE 2025 | AIR ROVER SCOUT LOTUS HILL",
+      videoId: "JNp4EOXcgB8",
+    },
+    {
+      title: "Lotus Hill New Year Programme – 2025",
+      videoId: "wetTM3OxxTY",
     },
   ]
 
   const getCategoryColor = (category: string) => {
     const colors: { [key: string]: string } = {
       Community: "bg-blue-100 text-blue-800",
-      Academic: "bg-green-100 text-green-800",
       "Special Event": "bg-pink-100 text-pink-800",
       Sports: "bg-yellow-100 text-yellow-800",
-      Arts: "bg-purple-100 text-purple-800",
+      Cultural: "bg-purple-100 text-purple-800",
     }
     return colors[category] || "bg-gray-100 text-gray-800"
   }
@@ -121,28 +119,25 @@ export default function News() {
             {upcomingEvents.map((event) => (
               <div
                 key={event.id}
-                className="bg-white border border-border rounded-lg overflow-hidden hover:shadow-md transition-shadow"
+                className="group relative overflow-hidden rounded-2xl border border-border/60 bg-white/90 shadow-sm hover:shadow-xl transition-all duration-300"
               >
-                <div className="bg-gradient-to-r from-primary/10 to-accent/10 p-4 flex items-center justify-between">
-                  <div>
-                    <p className="text-sm font-semibold text-primary mb-1">{event.date}</p>
-                    <p className="text-xs text-muted-foreground">{event.time}</p>
-                  </div>
-                  <div className="text-4xl">{event.icon}</div>
-                </div>
-                <div className="p-6">
-                  <div className="flex items-start justify-between gap-4 mb-3">
-                    <h3 className="text-lg font-bold text-foreground">{event.title}</h3>
+                <div className="absolute inset-0 opacity-0 group-hover:opacity-100 bg-gradient-to-br from-primary/5 via-accent/5 to-transparent transition-opacity duration-300" />
+                <div className="relative p-6 space-y-4">
+                  <div className="flex items-center justify-between gap-4">
+                    <span className="inline-flex items-center text-xs font-semibold tracking-wide uppercase text-primary bg-primary/10 px-3 py-1 rounded-full">
+                      {event.date}
+                    </span>
                     <span
                       className={`text-xs font-semibold px-3 py-1 rounded-full whitespace-nowrap ${getCategoryColor(event.category)}`}
                     >
                       {event.category}
                     </span>
                   </div>
-                  <p className="text-muted-foreground mb-4">{event.description}</p>
-                  <div className="flex items-center gap-2 text-sm text-muted-foreground">
-                    <span>📍</span>
-                    <span>{event.location}</span>
+                  <div>
+                    <h3 className="text-xl font-bold text-foreground mb-2 group-hover:text-primary transition-colors duration-300">
+                      {event.title}
+                    </h3>
+                    <p className="text-muted-foreground leading-relaxed text-sm">{event.description}</p>
                   </div>
                 </div>
               </div>
@@ -153,25 +148,33 @@ export default function News() {
       </section>
 
 
-      {/* Photo Gallery Preview */}
+      {/* Recent Highlights - YouTube Videos */}
       <section className="py-16 md:py-20 bg-background">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-12 text-center">Recent Highlights</h2>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            {[1, 2, 3].map((i) => (
-              <div
-                key={i}
-                className="bg-gradient-to-br from-primary/20 to-accent/20 rounded-lg aspect-video flex items-center justify-center text-6xl hover:shadow-lg transition-shadow"
-              >
-                📸
+            {recentHighlights.map((video, i) => (
+              <div key={i} className="rounded-lg overflow-hidden shadow-lg hover:shadow-xl transition-shadow bg-white">
+                <div className="aspect-video">
+                  <iframe
+                    src={`https://www.youtube.com/embed/${video.videoId}`}
+                    title={video.title}
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                    allowFullScreen
+                    className="w-full h-full"
+                  />
+                </div>
+                <div className="p-4">
+                  <h3 className="text-sm font-bold text-foreground">{video.title}</h3>
+                </div>
               </div>
             ))}
           </div>
 
           <div className="text-center mt-12">
             <p className="text-muted-foreground mb-6">
-              Follow us on social media for daily updates, photos, and stories from LOTUS HILL!
+              Follow us on YouTube for more updates, videos, and stories from LOTUS HILL!
             </p>
             <div className="flex gap-4 justify-center">
               <Button
@@ -179,21 +182,7 @@ export default function News() {
                 variant="outline"
                 className="border-primary text-primary hover:bg-primary/5 bg-transparent"
               >
-                <Link href="#">Facebook</Link>
-              </Button>
-              <Button
-                asChild
-                variant="outline"
-                className="border-primary text-primary hover:bg-primary/5 bg-transparent"
-              >
-                <Link href="#">Instagram</Link>
-              </Button>
-              <Button
-                asChild
-                variant="outline"
-                className="border-primary text-primary hover:bg-primary/5 bg-transparent"
-              >
-                <Link href="#">Twitter</Link>
+                <Link href="https://www.youtube.com/@lotushill843" target="_blank" rel="noopener noreferrer">YouTube</Link>
               </Button>
             </div>
           </div>

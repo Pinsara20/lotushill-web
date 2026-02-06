@@ -6,8 +6,8 @@ export default function Home() {
   const programs = [
     {
       icon: <GraduationCap className="w-8 h-8" />,
-      title: "Primary Education",
-      description: "Comprehensive primary education tailored to individual learning needs with specialized support.",
+      title: "Education",
+      description: "Comprehensive education tailored to individual learning needs with specialized support.",
       color: "primary" as const,
     },
     {
@@ -18,8 +18,8 @@ export default function Home() {
     },
     {
       icon: <Activity className="w-8 h-8" />,
-      title: "Occupational Therapy",
-      description: "Therapeutic activities to develop motor skills and independence in daily activities.",
+      title: "Vocational Training",
+      description: "Practical skills development and job training programs to prepare students for meaningful employment.",
       color: "secondary" as const,
     },
     {
@@ -200,7 +200,6 @@ export default function Home() {
 
         </div>
       </section>
-
 
 
     </>

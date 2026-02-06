@@ -1,4 +1,4 @@
-import { Mail, Phone, MapPin, Clock } from "lucide-react"
+import { Mail, Phone, MapPin } from "lucide-react"
 
 export default function Contact() {
   const backgroundUrl = "https://res.cloudinary.com/dtgaxulpq/image/upload/v1770338140/back-lotus_crm9or.jpg"
@@ -7,26 +7,20 @@ export default function Contact() {
     {
       icon: Phone,
       title: "Phone",
-      details: "+1 (555) 123-4567",
-      subtext: "Monday - Friday, 8:00 AM - 5:00 PM",
+      details: "+94 91 2298124",
+      subtext: "Get in touch with us anytime",
     },
     {
       icon: Mail,
       title: "Email",
-      details: "info@lotushill.edu",
+      details: "info.lotushill@gmail.com",
       subtext: "We respond within 24 hours",
     },
     {
       icon: MapPin,
       title: "Address",
-      details: "123 Education Lane",
-      subtext: "City, State 12345",
-    },
-    {
-      icon: Clock,
-      title: "Office Hours",
-      details: "8:00 AM - 4:00 PM",
-      subtext: "Monday - Friday",
+      details: "Akkara 15, Ganegama East",
+      subtext: "Baddegama, Galle, Sri Lanka",
     },
   ]
 
@@ -52,18 +46,37 @@ export default function Contact() {
       </section>
 
       {/* Contact Information */}
-      <section className="py-16 md:py-20 bg-white">
+      <section className="py-20 md:py-28 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+          <div className="text-center mb-16">
+            <div className="inline-flex items-center gap-2 px-6 py-2 rounded-full bg-gradient-to-r from-primary/10 to-accent/10 mb-6">
+              <span className="text-sm font-bold bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent tracking-wide">GET IN TOUCH</span>
+            </div>
+            <h2 className="text-4xl md:text-5xl font-black bg-gradient-to-r from-primary via-accent to-secondary bg-clip-text text-transparent mb-4">
+              We're Here to Help
+            </h2>
+            <p className="text-lg text-muted-foreground max-w-2xl mx-auto leading-relaxed">
+              Reach out to us through any of the following channels. We look forward to connecting with you.
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {contactInfo.map((info, index) => (
               <div
                 key={index}
-                className="bg-gradient-to-br from-primary/10 to-accent/10 rounded-lg p-6 border border-primary/10 text-center"
+                className="group relative bg-white rounded-2xl p-8 shadow-lg hover:shadow-2xl transition-all duration-500 border border-primary/10 hover:border-accent/30 overflow-hidden"
               >
-                <info.icon className="w-10 h-10 text-primary mx-auto mb-4" />
-                <h3 className="text-lg font-bold text-foreground mb-2">{info.title}</h3>
-                <p className="font-semibold text-primary mb-1">{info.details}</p>
-                <p className="text-sm text-muted-foreground">{info.subtext}</p>
+                <div className="absolute inset-0 bg-gradient-to-br from-primary/5 via-accent/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                <div className="relative z-10 text-center space-y-4">
+                  <div className="inline-flex items-center justify-center w-16 h-16 rounded-2xl bg-gradient-to-br from-primary/10 to-accent/10 group-hover:from-primary/20 group-hover:to-accent/20 transition-all duration-300">
+                    <info.icon className="w-8 h-8 text-primary group-hover:scale-110 transition-transform duration-300" />
+                  </div>
+                  <h3 className="text-xl font-bold text-foreground group-hover:text-primary transition-colors duration-300">
+                    {info.title}
+                  </h3>
+                  <p className="font-semibold text-primary text-lg">{info.details}</p>
+                  <p className="text-sm text-muted-foreground leading-relaxed">{info.subtext}</p>
+                </div>
               </div>
             ))}
           </div>

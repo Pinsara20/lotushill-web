@@ -15,7 +15,7 @@ export default function Programs() {
     {
       id: 1,
       icon: "🎓",
-      title: "Primary Education (Ages 5-8)",
+      title: "Education",
       description:
         "Foundational academic skills with emphasis on literacy, numeracy, and social development. Individualized learning plans for each student.",
       features: [
@@ -27,32 +27,6 @@ export default function Programs() {
     },
     {
       id: 2,
-      icon: "📖",
-      title: "Intermediate Education (Ages 9-12)",
-      description:
-        "Comprehensive academics with increased complexity and specialized subject areas. Integration of life skills and career exploration.",
-      features: [
-        "Advanced academic subjects",
-        "Science and environmental studies",
-        "Life skills training",
-        "Career awareness programs",
-      ],
-    },
-    {
-      id: 3,
-      icon: "🎯",
-      title: "Secondary Education (Ages 13-16)",
-      description:
-        "Preparation for transition to further education or vocational training. Focus on independence and practical skills.",
-      features: [
-        "Secondary level academics",
-        "Vocational skills training",
-        "Job readiness programs",
-        "Transition planning services",
-      ],
-    },
-    {
-      id: 4,
       icon: "🗣️",
       title: "Speech Therapy",
       description:
@@ -66,19 +40,45 @@ export default function Programs() {
     },
     {
       id: 5,
-      icon: "🤸",
-      title: "Occupational Therapy",
+      icon: "💼",
+      title: "Vocational Training",
       description:
-        "Therapeutic activities developing fine motor skills, sensory integration, and independence in self-care and daily living.",
+        "Practical skills development and job training programs to prepare students for meaningful employment and independent living.",
       features: [
-        "Motor skill development",
-        "Sensory integration therapy",
-        "Self-care and independence training",
-        "Adaptive equipment consultation",
+        "Hands-on vocational skills",
+        "Workplace readiness training",
+        "Job placement support",
+        "Life skills development",
       ],
     },
     {
       id: 6,
+      icon: "⚜️",
+      title: "Scout Activities",
+      description:
+        "Character building and outdoor education through scouting programs that promote teamwork, leadership, and community service.",
+      features: [
+        "Team building exercises",
+        "Outdoor adventure activities",
+        "Leadership development",
+        "Community service projects",
+      ],
+    },
+    {
+      id: 7,
+      icon: "⚽",
+      title: "Sport Activities",
+      description:
+        "Physical fitness and sports programs designed to improve motor skills, coordination, and promote healthy lifestyles.",
+      features: [
+        "Adaptive sports programs",
+        "Physical fitness training",
+        "Team sports participation",
+        "Motor skills development",
+      ],
+    },
+    {
+      id: 8,
       icon: "🎨",
       title: "Creative Arts & Music",
       description:
@@ -89,6 +89,25 @@ export default function Programs() {
         "Drama and theater programs",
         "Creative expression workshops",
       ],
+    },
+  ]
+
+  const supportServices = [
+    {
+      title: "Nutritious Meals",
+      description: "Healthy, inclusive meals and snacks prepared daily at our school.",
+    },
+    {
+      title: "Parent Workshops",
+      description: "Regular training sessions for families to support learning at home.",
+    },
+    {
+      title: "Medical Coordination",
+      description: "Liaison with healthcare providers to integrate medical and educational care.",
+    },
+    {
+      title: "Family Support Groups",
+      description: "Community and support networks for parents and families.",
     },
   ]
 
@@ -170,45 +189,18 @@ export default function Programs() {
             </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-            <div className="space-y-8">
-              <div className="group bg-gradient-to-br from-white to-very-light-pink/20 rounded-2xl p-8 border-2 border-primary/10 hover:border-accent/30 shadow-lg hover:shadow-xl transition-all duration-300">
-                <h3 className="text-2xl font-black bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent mb-3">Transportation Services</h3>
-                <p className="text-muted-foreground leading-relaxed">
-                  Safe, supervised transportation available for students within service area.
-                </p>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            {supportServices.map((service) => (
+              <div
+                key={service.title}
+                className="group bg-gradient-to-br from-white to-very-light-pink/20 rounded-2xl p-8 border border-primary/10 hover:border-accent/40 shadow-lg hover:shadow-2xl transition-all duration-300"
+              >
+                <h3 className="text-2xl font-black bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent mb-3">
+                  {service.title}
+                </h3>
+                <p className="text-muted-foreground leading-relaxed">{service.description}</p>
               </div>
-              <div className="group bg-gradient-to-br from-white to-very-light-pink/20 rounded-2xl p-8 border-2 border-primary/10 hover:border-accent/30 shadow-lg hover:shadow-xl transition-all duration-300">
-                <h3 className="text-2xl font-black bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent mb-3">Nutritious Meals</h3>
-                <p className="text-muted-foreground leading-relaxed">
-                  Healthy, inclusive meals and snacks prepared daily at our school.
-                </p>
-              </div>
-              <div className="group bg-gradient-to-br from-white to-very-light-pink/20 rounded-2xl p-8 border-2 border-primary/10 hover:border-accent/30 shadow-lg hover:shadow-xl transition-all duration-300">
-                <h3 className="text-2xl font-black bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent mb-3">Parent Workshops</h3>
-                <p className="text-muted-foreground leading-relaxed">
-                  Regular training sessions for families to support learning at home.
-                </p>
-              </div>
-            </div>
-            <div className="space-y-8">
-              <div className="group bg-gradient-to-br from-white to-very-light-pink/20 rounded-2xl p-8 border-2 border-primary/10 hover:border-accent/30 shadow-lg hover:shadow-xl transition-all duration-300">
-                <h3 className="text-2xl font-black bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent mb-3">Medical Coordination</h3>
-                <p className="text-muted-foreground leading-relaxed">
-                  Liaison with healthcare providers to integrate medical and educational care.
-                </p>
-              </div>
-              <div className="group bg-gradient-to-br from-white to-very-light-pink/20 rounded-2xl p-8 border-2 border-primary/10 hover:border-accent/30 shadow-lg hover:shadow-xl transition-all duration-300">
-                <h3 className="text-2xl font-black bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent mb-3">Transition Services</h3>
-                <p className="text-muted-foreground leading-relaxed">
-                  Comprehensive planning for transition to secondary education or employment.
-                </p>
-              </div>
-              <div className="group bg-gradient-to-br from-white to-very-light-pink/20 rounded-2xl p-8 border-2 border-primary/10 hover:border-accent/30 shadow-lg hover:shadow-xl transition-all duration-300">
-                <h3 className="text-2xl font-black bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent mb-3">Family Support Groups</h3>
-                <p className="text-muted-foreground leading-relaxed">Community and support networks for parents and families.</p>
-              </div>
-            </div>
+            ))}
           </div>
         </div>
       </section>
